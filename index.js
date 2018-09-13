@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {processColor,requireNativeComponent, ViewPropTypes,View} from 'react-native';
+import {processColor,requireNativeComponent, ViewPropTypes,Animated} from 'react-native';
 
 export default class RadialGradient extends Component {
     static propTypes = {
@@ -24,7 +24,7 @@ export default class RadialGradient extends Component {
 
 
         return (
-            <View ref={(component) => { this.gradientRef = component; }} {...otherProps} style={style}>
+            <Animated.View ref={(component) => { this.gradientRef = component; }} {...otherProps} style={style}>
                 <NativeRadialGradient
                     style={{position: 'absolute', top: 0, left: 0, bottom: 0, right: 0}}
                     colors={(colors)?colors.map(processColor):null}
@@ -33,7 +33,7 @@ export default class RadialGradient extends Component {
                     stops={stops}
                 />
                 { children }
-            </View>
+            </Animated.View>
         );
     }
 }
